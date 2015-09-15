@@ -12,7 +12,7 @@ public class HelpScreen extends Screen {
 	}
 
 	@Override
-	public void modelUpdate() {
+	public void modelUpdate(float deltaTime) {
 		// TODO Auto-generated method stub
 
 	}

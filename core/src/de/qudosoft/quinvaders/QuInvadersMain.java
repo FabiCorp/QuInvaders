@@ -1,6 +1,7 @@
 package de.qudosoft.quinvaders;
 
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Gdx;
 
 import de.qudosoft.quinvaders.screen.ScreenManager;
 
@@ -19,7 +20,7 @@ public class QuInvadersMain extends ApplicationAdapter {
 		
 		screenManager.userInput();
 		
-		screenManager.modelUpdate();
+		screenManager.modelUpdate(Gdx.graphics.getDeltaTime());
 		
 		screenManager.draw();
 	}

@@ -4,7 +4,7 @@ public interface GameEntity {
 	
 	void userInput();
 	
-	void modelUpdate();
+	void modelUpdate(float deltaTime);
 	
 	void draw();
 }

@@ -46,7 +46,7 @@ public class ScreenManager implements GameEntity {
 	}
 
 	@Override
-	public void modelUpdate() {
+	public void modelUpdate(float deltaTime) {
 		if (switchToGame) {
 			screenState = ScreenState.GAME;
 			screen = new GameScreen();
@@ -62,7 +62,7 @@ public class ScreenManager implements GameEntity {
 			screen = new HelpScreen();
 			switchToHelp = false;
 		} else {
-			screen.modelUpdate();
+			screen.modelUpdate(deltaTime);
 		}
 	}
 

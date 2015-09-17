@@ -2,9 +2,9 @@ package de.qudosoft.quinvaders.sprite;
 
 import com.badlogic.gdx.graphics.Texture;
 
+import de.qudosoft.quinvaders.animation.Animation;
 import de.qudosoft.quinvaders.util.GameGlobals;
 import de.qudosoft.quinvaders.util.Point;
-import de.qudosoft.quinvaders.util.Vector;
 
 public abstract class Sprite {
 	
@@ -16,11 +16,19 @@ public abstract class Sprite {
 	
 	private float speed;
 	
-	public abstract void modelUpdate(float deltaTime);
+	private Animation animation;
+	
+	public void modelUpdate(float deltaTime) {
+		
+		if (animation != null) {
+			animation.updateModel(deltaTime);
+		}
+		
+	}
 	
 	public void draw (){
 			
-		GameGlobals.getInstance().getBatch().draw(picture, position.getX(), position.getY());
+		GameGlobals.getInstance().getBatch().draw(getPicture(), position.getX(), position.getY());
 	}
 	
 	public Point getPosition() {
@@ -32,7 +40,13 @@ public abstract class Sprite {
 	}
 
 	public Texture getPicture() {
-		return picture;
+		
+		if (animation != null) {
+			return animation.getCurrentImage(); 
+		} else {
+		
+			return picture;
+		}
 	}
 
 	public void setPicture(Texture picture) {
@@ -53,6 +67,14 @@ public abstract class Sprite {
 
 	public void setSpeed(float speed) {
 		this.speed = speed;
+	}
+
+	public Animation getAnimation() {
+		return animation;
+	}
+
+	public void setAnimation(Animation animation) {
+		this.animation = animation;
 	}
 	
 	

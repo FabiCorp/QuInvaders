@@ -6,9 +6,9 @@ import com.badlogic.gdx.Input.Keys;
 public class ScreenManager implements GameEntity {
 
 	private Screen screen;
-	private ScreenState screenState = null;
-	private boolean switchToGame = false;
-	private boolean switchToHelp = false;
+	private ScreenState screenState  = null;
+	private boolean switchToGame     = false;
+	private boolean switchToHelp     = false;
 	private boolean switchToMainMenu = false;
 
 	public ScreenManager() {

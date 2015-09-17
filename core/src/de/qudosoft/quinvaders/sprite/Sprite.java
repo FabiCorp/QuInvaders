@@ -18,6 +18,8 @@ public abstract class Sprite {
 	
 	private Animation animation;
 	
+	
+	
 	public void modelUpdate(float deltaTime) {
 		
 		if (animation != null) {

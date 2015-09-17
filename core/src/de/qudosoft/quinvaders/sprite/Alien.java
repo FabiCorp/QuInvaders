@@ -28,12 +28,14 @@ public class Alien extends Sprite{
 	public void modelUpdate(float deltaTime) {
 			
 			super.modelUpdate(deltaTime);
-		
-			getPosition().setX(getPosition().getX() + getSpeed() * deltaTime * getDirection());
-
-			if (getPosition().getX() >= GameGlobals.getInstance().getRechtesende()
-					|| getPosition().getX() <= GameGlobals.getInstance().getLinkesende()){
-				setDirection(getDirection() * -1);
+			if (getAnimation().isChangeAnimation()){
+				getPosition().setX(getPosition().getX() + getSpeed() * getDirection());
+				if (getPosition().getX() >= GameGlobals.getInstance().getRechtesende()
+						|| getPosition().getX() <= GameGlobals.getInstance().getLinkesende()){
+					setDirection(getDirection() * -1);
+				
+				}
+				getAnimation().setChangeAnimation(false);
 			}
 
 	}

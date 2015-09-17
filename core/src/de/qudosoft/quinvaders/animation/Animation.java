@@ -8,27 +8,27 @@ import com.badlogic.gdx.graphics.Texture;
 
 public class Animation {
 
-	// Einzelbilder der Animation
 	private List<Texture> images; 
 
 	private int currentImageIndex;
 
-	// Zeit zwischen zwei Einzelbildern
 	private float delay;
 
-	// Seit dem letzten Bildwechsel verstrichene Zeit
 	private float time;
 
 	private boolean running;
 
+	private boolean animationChanged;
+
 	public Animation(float delay, Texture... textures) {
 
 		this.delay = delay;
-		
+
 		images = new ArrayList<Texture>();
 		images.addAll(Arrays.asList(textures));
 
-		running = false; 
+		running = false;
+		animationChanged = false;
 	}
 
 	public void start() {
@@ -41,21 +41,20 @@ public class Animation {
 		running = false;
 	}
 
-	// abhängig von Zeit model updaten, ggfs Bild weiterschalten
 	public void updateModel(float deltaTime) {
-		// :-)
-
 		time += deltaTime;
-		System.out.println("delay: " + delay + "time: " + time + " deltaTime : " + deltaTime);
-		
+
 		if (time >= delay){
 			if (currentImageIndex == images.size()-1){
 				currentImageIndex = 0;
+
 			}
 			else {
 				currentImageIndex++;
+
 			}
 			time = 0;
+			animationChanged = true;
 
 		}
 	}
@@ -65,5 +64,12 @@ public class Animation {
 		return currentImage;
 	}
 
+	public boolean isChangeAnimation() {
+		return animationChanged;
+	}
+
+	public void setChangeAnimation(boolean changeAnimation) {
+		this.animationChanged = changeAnimation;
+	}
 
 }

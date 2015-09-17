@@ -27,9 +27,12 @@ public class GameScreen extends Screen {
 	public void userInput() {
 		Point position        = spaceship.getPosition();
 		if(Gdx.input.isKeyPressed(Keys.LEFT)){
-			position.setX(position.getX()- spaceship.getSpeed());
+			if (position.getX() > GameGlobals.getInstance().getLinkesende()){
+				position.setX(position.getX()- spaceship.getSpeed());
+			}
 		}
 		if(Gdx.input.isKeyPressed(Keys.RIGHT)){
+			if (position.getX() < GameGlobals.getInstance().getRechtesende())
 			position.setX(position.getX()+ spaceship.getSpeed());
 		}
 

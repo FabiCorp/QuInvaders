@@ -10,6 +10,7 @@ public class MainMenuScreen extends Screen {
 	
 	private Texture pressButton;
 	
+	
 	public MainMenuScreen() {
 		pressButton = new Texture("QuinvadersLogo.png");
 		

@@ -55,7 +55,6 @@ public class Animation {
 			}
 			time = 0;
 			animationChanged = true;
-
 		}
 	}
 
@@ -70,6 +69,14 @@ public class Animation {
 
 	public void setChangeAnimation(boolean changeAnimation) {
 		this.animationChanged = changeAnimation;
+	}
+
+	public boolean isRunning() {
+		return running;
+	}
+
+	public void setRunning(boolean running) {
+		this.running = running;
 	}
 
 }

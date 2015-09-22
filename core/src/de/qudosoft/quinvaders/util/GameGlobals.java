@@ -6,8 +6,6 @@ public class GameGlobals {
 
 	private SpriteBatch batch;
 	
-	private final float rechtesEnde = 545;
-	
 	private final float linkesEnde  = 0;
 	
 	private GameGlobals() {
@@ -28,17 +26,14 @@ public class GameGlobals {
 	public SpriteBatch getBatch() {
 		return batch;
 	}
-
+	
 	public void setBatch(SpriteBatch batch) {
 		this.batch = batch;
-	}
-
-	public float getRechtesende() {
-		return rechtesEnde;
 	}
 
 	public float getLinkesende() {
 		return linkesEnde;
 	}
+
 	
 }

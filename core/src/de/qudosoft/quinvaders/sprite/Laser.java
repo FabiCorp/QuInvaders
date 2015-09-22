@@ -1,22 +1,28 @@
 package de.qudosoft.quinvaders.sprite;
 
-import com.badlogic.gdx.graphics.Texture;
+import java.awt.geom.Rectangle2D;
 
 import de.qudosoft.quinvaders.util.Point;
+import de.qudosoft.quinvaders.util.TextureFactory;
 
 
 public class Laser extends Sprite{
 	
-	public Laser() {
-		setPicture(new Texture("64px-SpaceInvadersLaserDepiction.png"));
+	public Laser(TextureFactory textureFactory) {
+		
+		super(textureFactory);
+		
+		setPicture(textureFactory.createTexture("laser03.png"));
 		setPosition(new Point(0, 0));
-		setSpeed(5);
+		setSpeed(15);
+		setSize(3);
+		setRechtesEnde(625);
+		
 	}
 
 	@Override
 	public void modelUpdate(float deltaTime) {
-		// TODO Auto-generated method stub
-		
+		setBoundingBox(new Rectangle2D.Float(getPosition().getX(), getPosition().getY()+getSize(), getSize(), getSize()* getPicture().getHeight() / getPicture().getWidth()));
 	}
 
 }

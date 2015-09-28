@@ -6,14 +6,12 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import de.qudosoft.quinvaders.util.TextureFactory;
-
 public class SpriteTest {
 
 	@Test(enabled=false)
 	public void testBoundingBox() {
 		
-		Sprite classUnderTest = new Sprite(new TextureFactory());
+		Sprite classUnderTest = new Sprite();
 		
 		classUnderTest.setBoundingBox(new Rectangle2D.Float(0, 0, 200, 200));
 		
@@ -33,7 +31,7 @@ public class SpriteTest {
 	@Test(dataProvider="rectangleValues", enabled=false)
 	public void testBoundingBoxWithDelta(Rectangle2D.Float boundingBox, Rectangle2D.Float expectedBoundingBox) {
 		
-		Sprite classUnderTest = new Sprite(new TextureFactory());
+		Sprite classUnderTest = new Sprite();
 		
 		classUnderTest.setBoundingBox(boundingBox);
 		classUnderTest.setBoundingBoxDelta(5);

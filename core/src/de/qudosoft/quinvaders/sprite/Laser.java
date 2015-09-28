@@ -2,22 +2,18 @@ package de.qudosoft.quinvaders.sprite;
 
 import java.awt.geom.Rectangle2D;
 
+import de.qudosoft.quinvaders.util.GameGlobals;
 import de.qudosoft.quinvaders.util.Point;
-import de.qudosoft.quinvaders.util.TextureFactory;
 
 
 public class Laser extends Sprite{
 	
-	public Laser(TextureFactory textureFactory) {
+	public Laser() {
 		
-		super(textureFactory);
-		
-		setPicture(textureFactory.createTexture("laser03.png"));
+		setPicture(GameGlobals.getInstance().getTextureFactory().createTexture("laser03.png"));
 		setPosition(new Point(0, 0));
-		setSpeed(15);
-		setSize(3);
-		setRechtesEnde(625);
-		
+		setSpeed(25);
+		setSize(3);		
 	}
 
 	@Override

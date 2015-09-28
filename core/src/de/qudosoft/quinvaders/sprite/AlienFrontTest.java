@@ -13,7 +13,7 @@ import com.badlogic.gdx.graphics.Texture;
 
 import de.qudosoft.quinvaders.util.TextureFactory;
 
-public class AlienTest {
+public class AlienFrontTest {
 
 	@Test(enabled=false)
 	public void testAlienAnimationNotNull() {
@@ -21,7 +21,7 @@ public class AlienTest {
 		TextureFactory mockedTextureFactory = Mockito.mock(TextureFactory.class);
 		Mockito.when(mockedTextureFactory.createTexture(Mockito.anyString())).thenReturn(null);
 		
-		Alien alien = new Alien(mockedTextureFactory);
+		AlienFront alien = new AlienFront();
 		
 		Assert.assertNotNull(alien.getAnimation());
 	}
@@ -43,7 +43,7 @@ public class AlienTest {
 		TextureFactory mockedTextureFactory = Mockito.mock(TextureFactory.class);
 		Mockito.when(mockedTextureFactory.createTexture(Mockito.anyString())).thenReturn(texture);
 		
-		Alien alien = new Alien(mockedTextureFactory);
+		AlienFront alien = new AlienFront();
 		
 		Assert.assertTrue(alien.getAnimation().isRunning());
 	}

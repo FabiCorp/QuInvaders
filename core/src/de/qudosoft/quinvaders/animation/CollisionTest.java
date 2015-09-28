@@ -33,10 +33,10 @@ public class CollisionTest {
 		TextureFactory mockedTextureFactory = Mockito.mock(TextureFactory.class);
 		Mockito.when(mockedTextureFactory.createTexture(Mockito.anyString())).thenReturn(null);
 		
-		Sprite sprite = new Sprite(mockedTextureFactory);
+		Sprite sprite = new Sprite();
 		sprite.setBoundingBox(spriteBoundingBox);
 		
-		Laser laser = new Laser(mockedTextureFactory);
+		Laser laser = new Laser();
 		laser.setBoundingBox(laserBoundingBox);
 		
 		boolean collides = Collision.collides(sprite, laser);

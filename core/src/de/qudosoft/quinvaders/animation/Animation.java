@@ -41,17 +41,15 @@ public class Animation {
 		running = false;
 	}
 
-	public void updateModel(float deltaTime) {
+	public void modelUpdate(float deltaTime) {
 		time += deltaTime;
 
 		if (time >= delay){
 			if (currentImageIndex == images.size()-1){
 				currentImageIndex = 0;
-
 			}
 			else {
 				currentImageIndex++;
-
 			}
 			time = 0;
 			animationChanged = true;

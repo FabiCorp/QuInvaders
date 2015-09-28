@@ -8,11 +8,8 @@ import de.qudosoft.quinvaders.animation.Animation;
 import de.qudosoft.quinvaders.screen.GameEntity;
 import de.qudosoft.quinvaders.util.Point;
 import de.qudosoft.quinvaders.util.ResizeDrawUtil;
-import de.qudosoft.quinvaders.util.TextureFactory;
 
 public class Sprite implements GameEntity {
-
-	protected TextureFactory textureFactory;
 
 	private Point position;
 
@@ -26,8 +23,6 @@ public class Sprite implements GameEntity {
 
 	private float size;
 
-	private float rechtesEnde;
-
 	private Rectangle2D.Float boundingBox;
 
 	private int boundingBoxDelta;
@@ -38,8 +33,7 @@ public class Sprite implements GameEntity {
 		return aliveState == AliveState.ALIVE;
 	}
 
-	public Sprite(TextureFactory textureFactory) {
-		this.textureFactory = textureFactory;
+	public Sprite() {
 		aliveState = AliveState.ALIVE;
 		position   = new Point(0, 0);
 		boundingBox = new Rectangle2D.Float();
@@ -54,7 +48,7 @@ public class Sprite implements GameEntity {
 	public void modelUpdate(float deltaTime) {
 
 		if (animation != null) {
-			animation.updateModel(deltaTime);
+			animation.modelUpdate(deltaTime);
 		}
 
 	}
@@ -116,14 +110,6 @@ public class Sprite implements GameEntity {
 
 	public void setSize(float size) {
 		this.size = size;
-	}
-
-	public float getRechtesEnde() {
-		return rechtesEnde;
-	}
-
-	public void setRechtesEnde(float rechtesEnde) {
-		this.rechtesEnde = rechtesEnde;
 	}
 
 	public Rectangle2D.Float getBoundingBox() {

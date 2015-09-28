@@ -5,41 +5,39 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 
-import de.qudosoft.quinvaders.animation.Collision;
-import de.qudosoft.quinvaders.sprite.Alien;
+import de.qudosoft.quinvaders.sprite.AlienMatrix;
 import de.qudosoft.quinvaders.sprite.AliveState;
 import de.qudosoft.quinvaders.sprite.Laser;
 import de.qudosoft.quinvaders.sprite.Spaceship;
 import de.qudosoft.quinvaders.util.GameGlobals;
 import de.qudosoft.quinvaders.util.Point;
-import de.qudosoft.quinvaders.util.TextureFactory;
 
 public class GameScreen extends Screen {
 
 	private Spaceship spaceship;
 	private Laser laser;
-	private Alien alien;
 	private boolean shootLaser = false;
 	private Texture background;
-
-
+	private AlienMatrix alienMatrix;
+	
 	public GameScreen() {
-		spaceship   = new Spaceship(new TextureFactory());
-		laser       = new Laser(new TextureFactory());
-		alien       = new Alien(new TextureFactory());
+		spaceship   = new Spaceship();
+		laser       = new Laser();
 		background  = new Texture("QuInvadersBackground.jpg");
+		alienMatrix = new AlienMatrix();
 	}
 
 	@Override
 	public void userInput() {
 		Point position        = spaceship.getPosition();
 		if(Gdx.input.isKeyPressed(Keys.LEFT)){
-			if (position.getX() > GameGlobals.getInstance().getLinkesende()){
+			if (position.getX() > GameGlobals.getInstance().getLeftEnd()){
 				position.setX(position.getX()- spaceship.getSpeed());
 			}
 		}
 		if(Gdx.input.isKeyPressed(Keys.RIGHT)){
-			if (position.getX() < spaceship.getRechtesEnde())
+			// TODO 31 weg...
+			if (position.getX() + 31 < GameGlobals.getInstance().getScreenWidth())
 			position.setX(position.getX()+ spaceship.getSpeed());
 		}
 
@@ -47,6 +45,7 @@ public class GameScreen extends Screen {
 			Point laserPosition = laser.getPosition();
 			if(Gdx.input.isKeyPressed(Keys.SPACE)){
 				shootLaser = true;
+				laser.setAliveState(AliveState.ALIVE);
 				laserPosition.setX(position.getX() + 15);
 				laserPosition.setY(position.getY() + 15);
 
@@ -56,8 +55,13 @@ public class GameScreen extends Screen {
 
 	@Override
 	public void modelUpdate(float deltaTime) {
-		alien.modelUpdate(deltaTime);
+		alienMatrix.modelUpdate(deltaTime);
+		if(alienMatrix.levelEnds(spaceship)){
+			//TODO terminate level here!!!
+		}
 		laser.modelUpdate(deltaTime);
+		alienMatrix.killAliens(laser);
+
 
 	}
 
@@ -69,16 +73,13 @@ public class GameScreen extends Screen {
 
 		GameGlobals.getInstance().getBatch().begin();
 		GameGlobals.getInstance().getBatch().draw(background, 0, 0);
-		laser.draw();
 		spaceship.draw();
-		
-		if (alien.isAlive()) {
-			alien.draw();
-			if (Collision.collides(alien, laser)){
-				System.out.println("Boooooom!");
-				alien.setAliveState(AliveState.DEAD);
-			}
+		if (laser.isAlive()){
+			laser.draw();
 		}
+		alienMatrix.draw();
+		
+		
 		
 		if(shootLaser){
 

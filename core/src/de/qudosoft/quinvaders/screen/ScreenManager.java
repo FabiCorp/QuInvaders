@@ -71,4 +71,5 @@ public class ScreenManager implements GameEntity {
 		screen.draw();
 
 	}
+
 }

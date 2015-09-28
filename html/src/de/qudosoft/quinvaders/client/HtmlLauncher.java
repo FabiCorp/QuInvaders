@@ -3,6 +3,7 @@ package de.qudosoft.quinvaders.client;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.gwt.GwtApplication;
 import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration;
+
 import de.qudosoft.quinvaders.QuInvadersMain;
 
 public class HtmlLauncher extends GwtApplication {

@@ -4,12 +4,12 @@ import com.badlogic.gdx.graphics.Texture;
 
 import de.qudosoft.quinvaders.util.Point;
 
-public class Spaceship extends Sprite{
+public class Ufo extends Sprite{
 	
-	public Spaceship() {
+	public Ufo() {
 		
-		setPicture(new Texture("Q_solo_reg_rgb2.png"));
-		setPosition(new Point(500, 0));
+		setPicture(new Texture("bonusshipFARB.png"));
+		setPosition(new Point(400, 400));
 		setSpeed(5);
 		setSize(35);
 	}

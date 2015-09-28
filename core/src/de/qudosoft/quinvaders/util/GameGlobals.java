@@ -6,10 +6,17 @@ public class GameGlobals {
 
 	private SpriteBatch batch;
 	
-	private final float linkesEnde  = 0;
+	private TextureFactory textureFactory;
+	
+	private final float leftEnd     = 20;
+	
+	private final float screenWidth = 640;
+	
+	private final float dropDown    = 20;
 	
 	private GameGlobals() {
-		batch = new SpriteBatch();
+		batch          = new SpriteBatch();
+		textureFactory = new TextureFactory();
 	}
 	
 	private static GameGlobals INSTANCE;
@@ -26,13 +33,21 @@ public class GameGlobals {
 	public SpriteBatch getBatch() {
 		return batch;
 	}
-	
-	public void setBatch(SpriteBatch batch) {
-		this.batch = batch;
+
+	public float getLeftEnd() {
+		return leftEnd;
 	}
 
-	public float getLinkesende() {
-		return linkesEnde;
+	public TextureFactory getTextureFactory() {
+		return textureFactory;
+	}
+
+	public float getScreenWidth() {
+		return screenWidth;
+	}
+
+	public float getDropDown() {
+		return dropDown;
 	}
 
 	

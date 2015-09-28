@@ -2,6 +2,7 @@ package de.qudosoft.quinvaders.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
+
 import de.qudosoft.quinvaders.QuInvadersMain;
 
 public class DesktopLauncher {

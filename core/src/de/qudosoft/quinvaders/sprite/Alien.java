@@ -9,7 +9,7 @@ public abstract class Alien extends Sprite {
 		
 		setPosition(new Point(10, 400));
 		setDirection(1);
-		setSpeed(25);
+		setSpeed(15);
 		setSize(35);
 		
 

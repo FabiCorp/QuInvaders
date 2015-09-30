@@ -6,5 +6,9 @@ public enum ScreenState {
 	
 	GAME, 
 	
-	HELP;
+	HELP,
+	
+	END;
+	
+	
 }

@@ -2,6 +2,7 @@ package de.qudosoft.quinvaders.sprite;
 
 import com.badlogic.gdx.graphics.Texture;
 
+import de.qudosoft.quinvaders.util.GameGlobals;
 import de.qudosoft.quinvaders.util.Point;
 
 public class Spaceship extends Sprite{
@@ -16,6 +17,6 @@ public class Spaceship extends Sprite{
 
 	@Override
 	public void modelUpdate(float deltaTime) {
-		
+		setSpeed(5 + GameGlobals.getInstance().getCombo());
 	}
 }

@@ -3,6 +3,8 @@ package de.qudosoft.quinvaders.screen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 
+import de.qudosoft.quinvaders.util.GameGlobals;
+
 public class ScreenManager implements GameEntity {
 
 	private Screen screen;
@@ -37,8 +39,15 @@ public class ScreenManager implements GameEntity {
 				screen.userInput();
 			}
 
+		} else if (screenState == ScreenState.END) {
+			if (Gdx.input.isKeyPressed(Keys.G)) {
+				switchToGame = true;
+			} else if (Gdx.input.isKeyPressed(Keys.ESCAPE)) {
+				switchToMainMenu = true;
+			} else {
+				screen.userInput();
+			}
 		}
-
 	}
 
 	public Screen getScreen() {
@@ -47,10 +56,18 @@ public class ScreenManager implements GameEntity {
 
 	@Override
 	public void modelUpdate(float deltaTime) {
+		if(GameGlobals.getInstance().isGameEnd()){
+			screenState = screenState.END;
+			screen = new EndScreen();
+			GameGlobals.getInstance().setGameEnd(false);
+		}
 		if (switchToGame) {
 			screenState = ScreenState.GAME;
 			screen = new GameScreen();
 			switchToGame = false;
+			GameGlobals.getInstance().setLives(3);
+			GameGlobals.getInstance().setCombo(0);
+			GameGlobals.getInstance().setScore(0);
 		}
 		if (switchToMainMenu) {
 			screenState = ScreenState.MAINMENU;

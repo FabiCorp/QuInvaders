@@ -50,7 +50,6 @@ public class Sprite implements GameEntity {
 		if (animation != null) {
 			animation.modelUpdate(deltaTime);
 		}
-
 	}
 
 	@Override
@@ -74,6 +73,15 @@ public class Sprite implements GameEntity {
 
 			return picture;
 		}
+	}
+	
+	public Rectangle2D.Float getBoundingBox() {
+		
+		boundingBox.setRect(getPosition().getX() + boundingBoxDelta,
+				getPosition().getY() + boundingBoxDelta, getSize() - boundingBoxDelta,
+				getSize() * getPicture().getHeight() / getPicture().getWidth() - boundingBoxDelta);
+		
+		return boundingBox;
 	}
 
 	public void setPicture(Texture picture) {
@@ -112,14 +120,6 @@ public class Sprite implements GameEntity {
 		this.size = size;
 	}
 
-	public Rectangle2D.Float getBoundingBox() {
-
-		boundingBox.setRect(getPosition().getX() + boundingBoxDelta,
-				getPosition().getY() + getSize() + boundingBoxDelta, getSize() - boundingBoxDelta,
-				getSize() * getPicture().getHeight() / getPicture().getWidth() - boundingBoxDelta);
-
-		return boundingBox;
-	}
 
 	public void setBoundingBox(Rectangle2D.Float boundingBox) {
 		this.boundingBox = boundingBox;

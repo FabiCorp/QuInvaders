@@ -10,10 +10,11 @@ public class Laser extends Sprite{
 	
 	public Laser() {
 		
-		setPicture(GameGlobals.getInstance().getTextureFactory().createTexture("laser03.png"));
+		setPicture(GameGlobals.getInstance().getTextureFactory().createTexture("laser03.jpg"));
 		setPosition(new Point(0, 0));
-		setSpeed(25);
-		setSize(3);		
+		setSpeed(10);
+		setSize(3);
+		setAliveState(AliveState.DEAD);
 	}
 
 	@Override
